@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 
         //Get player's input for what direction they want to go in
         float z = Input.GetAxis("Vertical") * Time.deltaTime;
-        gameObject.transform.position += z * cam.transform.forward;
+        gameObject.transform.position += z * cam.transform.forward * speed;
         /* float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
          float z = Input.GetAxis("Vertical") * Time.deltaTime;
 
