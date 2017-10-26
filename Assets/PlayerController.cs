@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
     public GameObject cam; //This is the main camera that is a child of the player
     float speed;//Value to change walking speed
-    public BoxCollider buttonCol; //the collider on the button
+
+    public BoxCollider buttonCol; //the collider on button1
+    public BoxCollider buttonCol2; //the collider on button2
 
     int button1Timer;
     int button2Timer;
@@ -18,16 +20,21 @@ public class PlayerController : MonoBehaviour {
     bool button2Pushed;
 
     public Text button1Timer_text;
+    public Text button2Timer_text;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         speed = 2f;
 
         button1Timer = 600;
         button2Timer = 360;
 
         button1Rest = 0;
-	}
+        button2Rest = 0;
+
+        button1Pushed = false;
+        button2Pushed = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -68,8 +75,9 @@ public class PlayerController : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, 10f)) //the 10f is the length the ray extends in distance
         {
             //A collision occured between the ray and a thing
-            if (hit.collider == buttonCol) {
-                //Was the collision on a button?
+            if (hit.collider == buttonCol)
+            {
+                //Was the collision on Button 1
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     //If the player clicks while looking at the button:
@@ -78,7 +86,19 @@ public class PlayerController : MonoBehaviour {
                     button1Pushed = true;
                     button1Rest = 0;
                 }
-                
+            }
+            if (hit.collider == buttonCol2)
+            {
+                //Was the collision on Button 2
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //If the player clicks while looking at the button:
+                    //Register the button click
+                    Debug.Log("Clicked Button 2");
+                    button2Pushed = true;
+                    button2Rest = 0;
+                }
+            
             }
         }
 
@@ -105,8 +125,21 @@ public class PlayerController : MonoBehaviour {
         {
             button2Timer--;
         }
-       // Debug.Log(button1Timer + " " + button2Timer);
+        else
+        {
+            //See if the player has pushed this button recently
+            button2Rest++;
+            if (button2Rest > 15)
+            {
+                //if X frames have passed, start the count again
+                button2Rest = 0;
+                button2Pushed = false;
+
+            }
+        }
+        // Debug.Log(button1Timer + " " + button2Timer);
         button1Timer_text.text = "Button 1 Timer: " + button1Timer/30;
+        button2Timer_text.text = "Button 2 Timer: " + button2Timer / 30;
 
 
     }
