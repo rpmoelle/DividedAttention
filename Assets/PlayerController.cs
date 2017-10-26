@@ -29,6 +29,27 @@ public class PlayerController : MonoBehaviour {
 
     float totalTime;
 
+    //Test Monsters
+    public GameObject testMonster;
+
+    bool backTo1;
+    bool backTo2;
+
+
+
+    void CheckMonster()
+    {
+        //This function keeps track of what monster to display and when monster appearances are triggered
+        //Test Case: Purple Sphere
+        if (backTo2)
+        {
+            //You start facing button 2
+            //Handle the test case
+            testMonster.GetComponent<MeshRenderer>().enabled = true;
+        }
+
+    }
+
     // Use this for initialization
     void Start () {
         speed = 2f;
@@ -41,6 +62,12 @@ public class PlayerController : MonoBehaviour {
 
         button1Pushed = false;
         button2Pushed = false;
+
+        //All Monsters start invisible
+        testMonster.GetComponent<MeshRenderer>().enabled = false;
+
+        backTo2 = false;
+        backTo1 = true;
     }
 	
 	// Update is called once per frame
@@ -89,9 +116,11 @@ public class PlayerController : MonoBehaviour {
                 {
                     //If the player clicks while looking at the button:
                     //Register the button click
-                    Debug.Log("Clicked Button");
                     button1Pushed = true;
                     button1Rest = 0;
+                    //You aren't looking at button 2
+                    backTo1 = false;
+                    backTo2 = true;
                 }
             }
             if (hit.collider == buttonCol2)
@@ -101,9 +130,11 @@ public class PlayerController : MonoBehaviour {
                 {
                     //If the player clicks while looking at the button:
                     //Register the button click
-                    Debug.Log("Clicked Button 2");
                     button2Pushed = true;
                     button2Rest = 0;
+                    //You aren't looking at button 1
+                    backTo1 = true;
+                    backTo2 = false;
                 }
             
             }
@@ -169,6 +200,8 @@ public class PlayerController : MonoBehaviour {
             totalTime++;
         }
 
+        //Handle Creepy Events when player's back is turned
+        CheckMonster();
 
     }
 }
