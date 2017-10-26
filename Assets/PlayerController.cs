@@ -144,6 +144,7 @@ public class PlayerController : MonoBehaviour {
         button1Timer_text.text = "Button 1 Timer: " + button1Timer/30;
         button2Timer_text.text = "Button 2 Timer: " + button2Timer / 30;
         button2Timer_world.text = "00:" + button2Timer / 30;
+        button1Timer_world.text = "00:" + button1Timer / 30;
 
 
     }
