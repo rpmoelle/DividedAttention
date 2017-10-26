@@ -22,15 +22,19 @@ public class PlayerController : MonoBehaviour {
     public Text button1Timer_text;
     public Text button2Timer_text;
 
+    public Text end_text;
+
     public Text button1Timer_world;
     public Text button2Timer_world;
+
+    float totalTime;
 
     // Use this for initialization
     void Start () {
         speed = 2f;
 
-        button1Timer = 600;
-        button2Timer = 600;
+        button1Timer = 1200;
+        button2Timer = 1200;
 
         button1Rest = 0;
         button2Rest = 0;
@@ -108,6 +112,8 @@ public class PlayerController : MonoBehaviour {
         //Handle Timers
         //////////////////////////////////////////////////
         //A timer will decrement as long as the player is not pressing that button
+        
+
         if (!button1Pushed)
         {
             button1Timer--;
@@ -141,10 +147,27 @@ public class PlayerController : MonoBehaviour {
             }
         }
         // Debug.Log(button1Timer + " " + button2Timer);
-        button1Timer_text.text = "Button 1 Timer: " + button1Timer/30;
-        button2Timer_text.text = "Button 2 Timer: " + button2Timer / 30;
-        button2Timer_world.text = "00:" + button2Timer / 30;
-        button1Timer_world.text = "00:" + button1Timer / 30;
+     
+
+
+        //Check for ending
+        if(button1Timer <= 0 || button2Timer <= 0)
+        {
+            //If either timer hits zero, game is over
+            //Display the player's time as a score
+            end_text.text = "You've got a one track mind.\nTime survived: " + Mathf.Round(totalTime / 30) + " seconds.";
+            button1Timer_text.text = "00:00";
+            button2Timer_text.text = "00:00";
+        }
+        else
+        {
+            button1Timer_text.text = "Button 1 Timer: " + button1Timer / 30;
+            button2Timer_text.text = "Button 2 Timer: " + button2Timer / 30;
+            button2Timer_world.text = "00:" + button2Timer / 30;
+            button1Timer_world.text = "00:" + button1Timer / 30;
+
+            totalTime++;
+        }
 
 
     }
