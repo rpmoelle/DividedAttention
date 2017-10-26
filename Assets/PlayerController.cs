@@ -22,12 +22,15 @@ public class PlayerController : MonoBehaviour {
     public Text button1Timer_text;
     public Text button2Timer_text;
 
+    public Text button1Timer_world;
+    public Text button2Timer_world;
+
     // Use this for initialization
     void Start () {
         speed = 2f;
 
         button1Timer = 600;
-        button2Timer = 360;
+        button2Timer = 600;
 
         button1Rest = 0;
         button2Rest = 0;
@@ -140,6 +143,7 @@ public class PlayerController : MonoBehaviour {
         // Debug.Log(button1Timer + " " + button2Timer);
         button1Timer_text.text = "Button 1 Timer: " + button1Timer/30;
         button2Timer_text.text = "Button 2 Timer: " + button2Timer / 30;
+        button2Timer_world.text = "00:" + button2Timer / 30;
 
 
     }
