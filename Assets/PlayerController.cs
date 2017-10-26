@@ -7,15 +7,22 @@ public class PlayerController : MonoBehaviour {
     float speed;//Value to change walking speed
     public BoxCollider buttonCol; //the collider on the button
 
+    int button1Timer;
+    int button2Timer;
+
 	// Use this for initialization
 	void Start () {
         speed = 2f;
+
+        button1Timer = 30;
+        button2Timer = 30;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
         //Handle player movement
+        //////////////////////////////////////////////////
         //Get player's input for what direction they want to go in
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime;
@@ -32,30 +39,28 @@ public class PlayerController : MonoBehaviour {
         //Move the player in the direction the camera is facing
         gameObject.transform.position += z * cam.transform.forward;
 
-        //Move the player left or right without using the camera
+        //Move the player left or right without using the camera THIS IS BUGGY (not cam dependent)
         gameObject.transform.position += new Vector3(x, 0, 0);
 
 
-        //Check to see if the player is looking at something interactable
-
-        // create a ray going into the scene from the screen location the user clicked at
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        //Check to see if the player is looking at a button
+        //////////////////////////////////////////////////
+        //Cast a ray from screen center into space
         Ray ray = cam.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
-
-        // the raycast hit info will be filled by the Physics.Raycast() call further
+        //Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);//show the debug ray
         RaycastHit hit;
-
-        // perform a raycast using our new ray. 
-        // If the ray collides with something solid in the scene, the "hit" structure will
-        // be filled with collision information
-        if (Physics.Raycast(ray, out hit, 10f))
+        if (Physics.Raycast(ray, out hit, 10f)) //the 10f is the length the ray extends in distance
         {
-            // a collision occured. Check if it's our plane object and create our cube at the
-            // collision point, facing toward the collision normal
+            //A collision occured between the ray and a thing
             if (hit.collider == buttonCol) {
-                Debug.Log("Here");
+                //Was the collision on a button?
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //If the player clicks while looking at the button:
+                    //Register the button click
+                    Debug.Log("Clicked Button");
+                }
+                
             }
         }
        
