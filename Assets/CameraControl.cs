@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour {
     //Code from unity community.com
     //by asteins
+    //http://wiki.unity3d.com/index.php?title=SmoothMouseLook
 
 
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }

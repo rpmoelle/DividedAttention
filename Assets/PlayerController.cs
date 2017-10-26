@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     public GameObject cam; //This is the main camera that is a child of the player
@@ -10,15 +11,22 @@ public class PlayerController : MonoBehaviour {
     int button1Timer;
     int button2Timer;
 
+    int button1Rest;
+    int button2Rest;
+
     bool button1Pushed;
     bool button2Pushed;
+
+    public Text button1Timer_text;
 
 	// Use this for initialization
 	void Start () {
         speed = 2f;
 
-        button1Timer = 360;
+        button1Timer = 600;
         button2Timer = 360;
+
+        button1Rest = 0;
 	}
 	
 	// Update is called once per frame
@@ -68,6 +76,7 @@ public class PlayerController : MonoBehaviour {
                     //Register the button click
                     Debug.Log("Clicked Button");
                     button1Pushed = true;
+                    button1Rest = 0;
                 }
                 
             }
@@ -80,11 +89,24 @@ public class PlayerController : MonoBehaviour {
         {
             button1Timer--;
         }
+        else
+        {
+            //See if the player has pushed this button recently
+            button1Rest++;
+            if(button1Rest > 15)
+            {
+                //if X frames have passed, start the count again
+                button1Rest = 0;
+                button1Pushed = false;
+
+            }
+        }
         if (!button2Pushed)
         {
             button2Timer--;
         }
-        Debug.Log(button1Timer + " " + button2Timer);
+       // Debug.Log(button1Timer + " " + button2Timer);
+        button1Timer_text.text = "Button 1 Timer: " + button1Timer/30;
 
 
     }
