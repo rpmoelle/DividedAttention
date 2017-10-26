@@ -10,12 +10,15 @@ public class PlayerController : MonoBehaviour {
     int button1Timer;
     int button2Timer;
 
+    bool button1Pushed;
+    bool button2Pushed;
+
 	// Use this for initialization
 	void Start () {
         speed = 2f;
 
-        button1Timer = 30;
-        button2Timer = 30;
+        button1Timer = 360;
+        button2Timer = 360;
 	}
 	
 	// Update is called once per frame
@@ -24,26 +27,28 @@ public class PlayerController : MonoBehaviour {
         //Handle player movement ->See Camera Controller
         //They did this way way way better than I did
         //////////////////////////////////////////////////
-        
+
         //Get player's input for what direction they want to go in
-       /* float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime;
-
-        //Get where the mouse is pointing
-        float h = 1f * Input.GetAxis("Mouse X");
-        float v = 2f * Input.GetAxis("Mouse Y");
-
-        //Rotate the camera based on the player's rotation and rotate the player object
-       /* cam.transform.Rotate(0, h, 0);
-        cam.transform.Rotate(0, 0, v);//test
-        gameObject.transform.Rotate(0, h, 0);
-
-        //Move the player in the direction the camera is facing
         gameObject.transform.position += z * cam.transform.forward;
-       // gameObject.transform.position += x * cam.transform.forward;
+        /* float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+         float z = Input.GetAxis("Vertical") * Time.deltaTime;
 
-        //Move the player left or right without using the camera THIS IS BUGGY (not cam dependent)
-        //gameObject.transform.position += new Vector3(x, 0, 0);*/
+         //Get where the mouse is pointing
+         float h = 1f * Input.GetAxis("Mouse X");
+         float v = 2f * Input.GetAxis("Mouse Y");
+
+         //Rotate the camera based on the player's rotation and rotate the player object
+        /* cam.transform.Rotate(0, h, 0);
+         cam.transform.Rotate(0, 0, v);//test
+         gameObject.transform.Rotate(0, h, 0);
+
+         //Move the player in the direction the camera is facing
+         gameObject.transform.position += z * cam.transform.forward;
+        // gameObject.transform.position += x * cam.transform.forward;
+
+         //Move the player left or right without using the camera THIS IS BUGGY (not cam dependent)
+         //gameObject.transform.position += new Vector3(x, 0, 0);*/
 
 
         //Check to see if the player is looking at a button
@@ -62,12 +67,24 @@ public class PlayerController : MonoBehaviour {
                     //If the player clicks while looking at the button:
                     //Register the button click
                     Debug.Log("Clicked Button");
+                    button1Pushed = true;
                 }
                 
             }
         }
-       
 
+        //Handle Timers
+        //////////////////////////////////////////////////
+        //A timer will decrement as long as the player is not pressing that button
+        if (!button1Pushed)
+        {
+            button1Timer--;
+        }
+        if (!button2Pushed)
+        {
+            button2Timer--;
+        }
+        Debug.Log(button1Timer + " " + button2Timer);
 
 
     }
