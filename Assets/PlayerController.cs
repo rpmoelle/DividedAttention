@@ -21,10 +21,12 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //Handle player movement
+        //Handle player movement ->See Camera Controller
+        //They did this way way way better than I did
         //////////////////////////////////////////////////
+        
         //Get player's input for what direction they want to go in
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+       /* float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime;
 
         //Get where the mouse is pointing
@@ -32,15 +34,16 @@ public class PlayerController : MonoBehaviour {
         float v = 2f * Input.GetAxis("Mouse Y");
 
         //Rotate the camera based on the player's rotation and rotate the player object
-        cam.transform.Rotate(0, h, 0);
-        //cam.transform.Rotate(v, 0, 0);//test
+       /* cam.transform.Rotate(0, h, 0);
+        cam.transform.Rotate(0, 0, v);//test
         gameObject.transform.Rotate(0, h, 0);
 
         //Move the player in the direction the camera is facing
         gameObject.transform.position += z * cam.transform.forward;
+       // gameObject.transform.position += x * cam.transform.forward;
 
         //Move the player left or right without using the camera THIS IS BUGGY (not cam dependent)
-        gameObject.transform.position += new Vector3(x, 0, 0);
+        //gameObject.transform.position += new Vector3(x, 0, 0);*/
 
 
         //Check to see if the player is looking at a button
