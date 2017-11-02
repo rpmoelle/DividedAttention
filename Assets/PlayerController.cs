@@ -32,8 +32,19 @@ public class PlayerController : MonoBehaviour {
     //Test Monsters
     public GameObject testMonster;
 
+    public GameObject floor;
+    public GameObject wallCap1;
+    public GameObject ceiling;
+    public GameObject plant;
+    public GameObject timer1;
+    public GameObject button1_platform;
+    public GameObject wall1;
+    public GameObject wall2;
+
     bool backTo1;
     bool backTo2;
+
+    int monsterCounter;
 
     //Buttons
     public Animator button1;
@@ -44,11 +55,27 @@ public class PlayerController : MonoBehaviour {
     {
         //This function keeps track of what monster to display and when monster appearances are triggered
         //Test Case: Purple Sphere
-        if (backTo2)
+        if (backTo2 && monsterCounter == 0)
         {
             //You start facing button 2
             //Handle the test case
             testMonster.GetComponent<MeshRenderer>().enabled = true;
+            floor.transform.localScale = new Vector3(floor.transform.localScale.x, floor.transform.localScale.y, 100);
+            //move the end cap back
+            wallCap1.transform.position = new Vector3(wallCap1.transform.position.x, wallCap1.transform.position.y, 25);
+            //move plant, button, and timer
+            plant.transform.position = new Vector3(plant.transform.position.x, plant.transform.position.y, 20);
+            button1_platform.transform.position = new Vector3(button1_platform.transform.position.x, button1_platform.transform.position.y, 20);
+            timer1.transform.position = new Vector3(timer1.transform.position.x, timer1.transform.position.y, 24);
+            //extend ceiling
+            ceiling.transform.localScale = new Vector3(ceiling.transform.localScale.x, ceiling.transform.localScale.y, 100);
+            //scale walls
+            wall1.transform.localScale = new Vector3(wall1.transform.localScale.x, wall1.transform.localScale.y, 100);
+            wall2.transform.localScale = new Vector3(wall2.transform.localScale.x, wall2.transform.localScale.y, 100);
+            //fixing textures on floor and cieling and walls
+            //reassign the material?
+
+            monsterCounter++;
         }
 
     }
@@ -71,6 +98,8 @@ public class PlayerController : MonoBehaviour {
 
         backTo2 = false;
         backTo1 = true;
+
+        monsterCounter = 0;
     }
 	
 	// Update is called once per frame
