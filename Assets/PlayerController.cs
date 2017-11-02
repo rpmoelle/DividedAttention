@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour {
     public Light light1_ceiling;
     public Material greenLightMat;
     public MeshRenderer light1_model;
+    public GameObject light1_ceiling_obj;
 
    
 
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour {
             timer1.transform.position = new Vector3(timer1.transform.position.x, timer1.transform.position.y, 24);
             //move light
             ceilingLightModel2.transform.position = new Vector3(ceilingLightModel2.transform.position.x, ceilingLightModel2.transform.position.y, 24);
+            light1_ceiling_obj.transform.position = new Vector3(light1_ceiling_obj.transform.position.x, light1_ceiling_obj.transform.position.y, 24);
             //extend ceiling
             ceiling.transform.localScale = new Vector3(ceiling.transform.localScale.x, ceiling.transform.localScale.y, 100);
             ceiling.GetComponent<MeshRenderer>().material = bigCeiling;

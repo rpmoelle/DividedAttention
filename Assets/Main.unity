@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 650077162}
   - component: {fileID: 650077163}
   m_Layer: 0
-  m_Name: CeilingLight
+  m_Name: CeilingLightNoPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2629,6 +2629,7 @@ MonoBehaviour:
   light1_ceiling: {fileID: 254746356}
   greenLightMat: {fileID: 2100000, guid: 1305a0a5cf9d0b84585edb4c8b494a74, type: 2}
   light1_model: {fileID: 537754364}
+  light1_ceiling_obj: {fileID: 650077161}
   button1: {fileID: 2002503669}
   button2: {fileID: 1513324526}
 --- !u!54 &1510086937
