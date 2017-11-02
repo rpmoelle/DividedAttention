@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour {
     bool backTo1;
     bool backTo2;
 
+    //Buttons
+    public Animator button1;
+    public Animator button2;
 
 
     void CheckMonster()
@@ -122,6 +125,12 @@ public class PlayerController : MonoBehaviour {
                     //You aren't looking at button 2
                     backTo1 = false;
                     backTo2 = true;
+                    //play the animation
+                    button1.SetBool("isPushed",true);
+                }
+                else
+                {
+                    button1.SetBool("isPushed", false);
                 }
             }
             if (hit.collider == buttonCol2)
@@ -136,8 +145,14 @@ public class PlayerController : MonoBehaviour {
                     //You aren't looking at button 1
                     backTo1 = true;
                     backTo2 = false;
+                    //play the animation
+                    button2.SetBool("isPushed", true);
                 }
-            
+                else
+                {
+                    button2.SetBool("isPushed", false);
+                }
+
             }
         }
       

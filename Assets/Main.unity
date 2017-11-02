@@ -1272,7 +1272,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 726841166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 163, y: 102, z: 0}
+  m_LocalPosition: {x: 226.5, y: 141.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 733392331}
@@ -1311,7 +1311,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 733392330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -81, y: -85, z: 0}
+  m_LocalPosition: {x: -144.5, y: -124.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 726841170}
@@ -1551,7 +1551,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 742eba07c2e95b34eb010f7f2c9c2deb, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 742eba07c2e95b34eb010f7f2c9c2deb, type: 3}
       propertyPath: m_LocalScale.x
@@ -1569,6 +1569,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 413ea58321700c74c9839dbba9294631, type: 2}
+    - target: {fileID: 9500000, guid: 742eba07c2e95b34eb010f7f2c9c2deb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5d8e60c81f781be4184f290e2bcf378c, type: 2}
+    - target: {fileID: 100000, guid: 742eba07c2e95b34eb010f7f2c9c2deb, type: 3}
+      propertyPath: m_Name
+      value: button2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 742eba07c2e95b34eb010f7f2c9c2deb, type: 3}
   m_IsPrefabParent: 0
@@ -1996,7 +2004,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1195863252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 79, y: -86.4, z: 0}
+  m_LocalPosition: {x: 142.5, y: -125.899994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 726841170}
@@ -2101,6 +2109,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 413ea58321700c74c9839dbba9294631, type: 2}
+    - target: {fileID: 100000, guid: 742eba07c2e95b34eb010f7f2c9c2deb, type: 3}
+      propertyPath: m_Name
+      value: button1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 742eba07c2e95b34eb010f7f2c9c2deb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2a7d912d42f838947b27837f4d4de48f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 742eba07c2e95b34eb010f7f2c9c2deb, type: 3}
   m_IsPrefabParent: 0
@@ -2631,6 +2647,8 @@ MonoBehaviour:
   button1Timer_world: {fileID: 1286508667}
   button2Timer_world: {fileID: 566106263}
   testMonster: {fileID: 324183478}
+  button1: {fileID: 2002503669}
+  button2: {fileID: 1513324526}
 --- !u!54 &1510086937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2646,6 +2664,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!95 &1513324526 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 742eba07c2e95b34eb010f7f2c9c2deb,
+    type: 3}
+  m_PrefabInternal: {fileID: 906363623}
 --- !u!1 &1547155010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3638,6 +3661,11 @@ Transform:
   m_Father: {fileID: 636016101}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90.255005}
+--- !u!95 &2002503669 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 742eba07c2e95b34eb010f7f2c9c2deb,
+    type: 3}
+  m_PrefabInternal: {fileID: 1262269307}
 --- !u!1 &2107035037
 GameObject:
   m_ObjectHideFlags: 0
