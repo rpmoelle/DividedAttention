@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 254746355}
   - component: {fileID: 254746356}
   m_Layer: 0
-  m_Name: CeilingLight (1)
+  m_Name: CeilingLight (1)x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 254746354}
   m_LocalRotation: {x: 0.68783885, y: -0.11106779, z: 0.10225959, w: 0.70998925}
-  m_LocalPosition: {x: -0.134, y: 1.934, z: 7.87}
+  m_LocalPosition: {x: -0.14, y: 1.77, z: 7.87}
   m_LocalScale: {x: 1.3318399, y: 0.9150603, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 103516393}
@@ -306,7 +306,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 6.13
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 537754365}
   - component: {fileID: 537754364}
   m_Layer: 0
-  m_Name: CeilingLight
+  m_Name: CeilingLightModel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2865,6 +2865,10 @@ MonoBehaviour:
   button1_platform: {fileID: 1061513298}
   wall1: {fileID: 968243470}
   wall2: {fileID: 1676672847}
+  ceilingLightModel2: {fileID: 1826478265}
+  light1_ceiling: {fileID: 254746356}
+  greenLightMat: {fileID: 2100000, guid: 1305a0a5cf9d0b84585edb4c8b494a74, type: 2}
+  light1_model: {fileID: 537754364}
   button1: {fileID: 2002503669}
   button2: {fileID: 1513324526}
 --- !u!54 &1510086937
@@ -3580,7 +3584,7 @@ GameObject:
   - component: {fileID: 1826478267}
   - component: {fileID: 1826478266}
   m_Layer: 0
-  m_Name: CeilingLight (1)
+  m_Name: CeilingLightModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

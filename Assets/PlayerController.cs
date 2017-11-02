@@ -40,6 +40,13 @@ public class PlayerController : MonoBehaviour {
     public GameObject button1_platform;
     public GameObject wall1;
     public GameObject wall2;
+    public GameObject ceilingLightModel2;
+
+    public Light light1_ceiling;
+    public Material greenLightMat;
+    public MeshRenderer light1_model;
+
+   
 
     bool backTo1;
     bool backTo2;
@@ -57,6 +64,7 @@ public class PlayerController : MonoBehaviour {
         //Test Case: Purple Sphere
         if (backTo2 && monsterCounter == 0)
         {
+            //Stretch wall
             //You start facing button 2
             //Handle the test case
             testMonster.GetComponent<MeshRenderer>().enabled = true;
@@ -67,6 +75,8 @@ public class PlayerController : MonoBehaviour {
             plant.transform.position = new Vector3(plant.transform.position.x, plant.transform.position.y, 20);
             button1_platform.transform.position = new Vector3(button1_platform.transform.position.x, button1_platform.transform.position.y, 20);
             timer1.transform.position = new Vector3(timer1.transform.position.x, timer1.transform.position.y, 24);
+            //move light
+            ceilingLightModel2.transform.position = new Vector3(ceilingLightModel2.transform.position.x, ceilingLightModel2.transform.position.y, 24);
             //extend ceiling
             ceiling.transform.localScale = new Vector3(ceiling.transform.localScale.x, ceiling.transform.localScale.y, 100);
             //scale walls
@@ -75,6 +85,18 @@ public class PlayerController : MonoBehaviour {
             //fixing textures on floor and cieling and walls
             //reassign the material?
 
+            monsterCounter++;
+        }
+        if (backTo1 && monsterCounter == 1)
+        {
+            //change light color
+            light1_ceiling.color = Color.green;
+            light1_model.material = greenLightMat;
+            monsterCounter++;
+        }
+        if (backTo2 && monsterCounter == 2)
+        {
+            //Turn the timer 
             monsterCounter++;
         }
 
