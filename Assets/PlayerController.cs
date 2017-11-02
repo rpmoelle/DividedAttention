@@ -98,7 +98,8 @@ public class PlayerController : MonoBehaviour {
 
          //Move the player left or right without using the camera THIS IS BUGGY (not cam dependent)
          //gameObject.transform.position += new Vector3(x, 0, 0);*/
-
+        //Freeze Y movement
+        this.gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0.93f, gameObject.transform.position.z);
 
         //Check to see if the player is looking at a button
         //////////////////////////////////////////////////
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour {
             
             }
         }
-
+      
         //Handle Timers
         //////////////////////////////////////////////////
         //A timer will decrement as long as the player is not pressing that button
