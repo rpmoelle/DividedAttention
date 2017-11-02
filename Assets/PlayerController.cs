@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour {
     public GameObject wall1;
     public GameObject wall2;
     public GameObject ceilingLightModel2;
+    public Material bigFloor;
+    public Material bigCeiling;
+    public Material bigWall;
 
     public Light light1_ceiling;
     public Material greenLightMat;
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour {
             //Handle the test case
             testMonster.GetComponent<MeshRenderer>().enabled = true;
             floor.transform.localScale = new Vector3(floor.transform.localScale.x, floor.transform.localScale.y, 100);
+            floor.GetComponent<MeshRenderer>().material = bigFloor;
             //move the end cap back
             wallCap1.transform.position = new Vector3(wallCap1.transform.position.x, wallCap1.transform.position.y, 25);
             //move plant, button, and timer
@@ -79,9 +83,12 @@ public class PlayerController : MonoBehaviour {
             ceilingLightModel2.transform.position = new Vector3(ceilingLightModel2.transform.position.x, ceilingLightModel2.transform.position.y, 24);
             //extend ceiling
             ceiling.transform.localScale = new Vector3(ceiling.transform.localScale.x, ceiling.transform.localScale.y, 100);
+            ceiling.GetComponent<MeshRenderer>().material = bigCeiling;
             //scale walls
             wall1.transform.localScale = new Vector3(wall1.transform.localScale.x, wall1.transform.localScale.y, 100);
             wall2.transform.localScale = new Vector3(wall2.transform.localScale.x, wall2.transform.localScale.y, 100);
+            wall1.GetComponent<MeshRenderer>().material = bigWall;
+            wall2.GetComponent<MeshRenderer>().material = bigWall;
             //fixing textures on floor and cieling and walls
             //reassign the material?
 
