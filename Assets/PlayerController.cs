@@ -50,7 +50,10 @@ public class PlayerController : MonoBehaviour {
     public MeshRenderer light1_model;
     public GameObject light1_ceiling_obj;
 
-   
+    public GameObject timer1_obj;
+    public GameObject timer2_obj;
+
+
 
     bool backTo1;
     bool backTo2;
@@ -70,8 +73,6 @@ public class PlayerController : MonoBehaviour {
         {
             //Stretch wall
             //You start facing button 2
-            //Handle the test case
-            testMonster.GetComponent<MeshRenderer>().enabled = true;
             floor.transform.localScale = new Vector3(floor.transform.localScale.x, floor.transform.localScale.y, 100);
             floor.GetComponent<MeshRenderer>().material = bigFloor;
             //move the end cap back
@@ -106,6 +107,7 @@ public class PlayerController : MonoBehaviour {
         if (backTo2 && monsterCounter == 2)
         {
             //Turn the timer 
+            timer2_obj.transform.localScale = new Vector3(timer2_obj.transform.localScale.x, timer2_obj.transform.localScale.y * -1, timer2_obj.transform.localScale.z);
             monsterCounter++;
         }
 
@@ -113,7 +115,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        speed = 2f;
+        speed = 6f;
 
         button1Timer = 1200;
         button2Timer = 1200;
