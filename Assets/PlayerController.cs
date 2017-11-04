@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 
     float totalTime;
 
+    bool collide;
+
     //Test Monsters
     public GameObject testMonster;
 
@@ -63,6 +65,17 @@ public class PlayerController : MonoBehaviour {
     //Buttons
     public Animator button1;
     public Animator button2;
+
+   /* void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "wall")
+        {
+            //prevent bounce
+            speed = 0;
+            collide = true;
+        }
+     
+    }*/
 
 
     void CheckMonster()
@@ -145,6 +158,12 @@ public class PlayerController : MonoBehaviour {
         //Get player's input for what direction they want to go in
         float z = Input.GetAxis("Vertical") * Time.deltaTime;
         gameObject.transform.position += z * cam.transform.forward * speed;
+
+        if (collide)
+        {
+            collide = false;
+            speed = 2;
+        }
         /* float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
          float z = Input.GetAxis("Vertical") * Time.deltaTime;
 
