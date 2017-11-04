@@ -85,9 +85,9 @@ public class PlayerController : MonoBehaviour {
         Debug.Log(monsterCounter);
         //This function keeps track of what monster to display and when monster appearances are triggered
         //Test Case: Purple Sphere
-        if (backTo2 && monsterCounter == 3)
+        if (backTo2 && monsterCounter == 6)
         {
-            //Stretch wall
+            // 7 Stretch wall
             //You start facing button 2
             floor.transform.localScale = new Vector3(floor.transform.localScale.x, floor.transform.localScale.y, 100);
             floor.GetComponent<MeshRenderer>().material = bigFloor;
@@ -113,22 +113,29 @@ public class PlayerController : MonoBehaviour {
 
             monsterCounter++;
         }
-        if (backTo1 && monsterCounter == 0)
+        if (backTo2 && monsterCounter == 4)
         {
-            //change light color
+            // 5 change light color
             light1_ceiling.color = Color.green;
             light1_model.material = greenLightMat;
             monsterCounter++;
         }
-        if (backTo2 && monsterCounter == 1)
+        if (backTo2 && monsterCounter == 0)
         {
-            //Flip over 
+            // 1 Flip over 
             timer2_obj.transform.localScale = new Vector3(timer2_obj.transform.localScale.x, timer2_obj.transform.localScale.y * -1, timer2_obj.transform.localScale.z);
             monsterCounter++;
         }
-        if (backTo1 && monsterCounter == 2)
+
+        if (backTo1 && monsterCounter == 1)
         {
-            //two plants
+            // 2 Change timer color
+            monsterCounter++;
+        }
+
+        if (backTo2 && monsterCounter == 2)
+        {
+            // 3 two plants
             Renderer[] allChildren = plant2.gameObject.GetComponentsInChildren<Renderer>();
             foreach (Renderer child in allChildren)
             {
@@ -136,7 +143,42 @@ public class PlayerController : MonoBehaviour {
             }
             monsterCounter++;
         }
-      
+
+        if (backTo1 && monsterCounter == 3)
+        {
+            // 4 Turn the timer
+            monsterCounter++;
+        }
+
+        if (backTo1 && monsterCounter == 5)
+        {
+            // 6 Darkness
+            monsterCounter++;
+        }
+
+        if (backTo2 && monsterCounter == 8)
+        {
+            // 9 Tilted player
+            monsterCounter++;
+        }
+
+        if (backTo1 && monsterCounter == 7)
+        {
+            // 8 two buttons
+            monsterCounter++;
+        }
+
+        if (backTo1 && monsterCounter == 9)
+        {
+            // 10 reduced speed
+            monsterCounter++;
+        }
+
+        if (backTo2 && monsterCounter == 10)
+        {
+            // 11 double vision
+            monsterCounter++;
+        }
     }
 
     // Use this for initialization
