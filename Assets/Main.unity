@@ -1235,7 +1235,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 726841166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 322, y: 201.5, z: 0}
+  m_LocalPosition: {x: 492, y: 307.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 733392331}
@@ -1274,7 +1274,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 733392330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -240, y: -184.5, z: 0}
+  m_LocalPosition: {x: -410, y: -290.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 726841170}
@@ -1556,7 +1556,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 1c5f11ab393937f44a3a90ef373477eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.007
+      value: -0.0069999993
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 1c5f11ab393937f44a3a90ef373477eb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1568,7 +1568,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 1c5f11ab393937f44a3a90ef373477eb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.95355684
+      value: -0.42941022
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 1c5f11ab393937f44a3a90ef373477eb, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1576,7 +1576,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 1c5f11ab393937f44a3a90ef373477eb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30121315
+      value: -0.9031096
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 1c5f11ab393937f44a3a90ef373477eb, type: 3}
       propertyPath: m_RootOrder
@@ -1680,7 +1680,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: b2594f69e4b74dd4c98bae0973dec363, type: 2}
     - target: {fileID: 400018, guid: 1c5f11ab393937f44a3a90ef373477eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 215.06099
+      value: 410.86
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c5f11ab393937f44a3a90ef373477eb, type: 3}
@@ -2111,7 +2111,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1195863252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 238, y: -185.9, z: 0}
+  m_LocalPosition: {x: 408, y: -291.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 726841170}
