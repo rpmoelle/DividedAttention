@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject timer1_obj;
     public GameObject timer2_obj;
 
+    public GameObject plant2;
+
 
 
     bool backTo1;
@@ -80,9 +82,10 @@ public class PlayerController : MonoBehaviour {
 
     void CheckMonster()
     {
+        Debug.Log(monsterCounter);
         //This function keeps track of what monster to display and when monster appearances are triggered
         //Test Case: Purple Sphere
-        if (backTo2 && monsterCounter == 0)
+        if (backTo2 && monsterCounter == 3)
         {
             //Stretch wall
             //You start facing button 2
@@ -110,20 +113,30 @@ public class PlayerController : MonoBehaviour {
 
             monsterCounter++;
         }
-        if (backTo1 && monsterCounter == 1)
+        if (backTo1 && monsterCounter == 0)
         {
             //change light color
             light1_ceiling.color = Color.green;
             light1_model.material = greenLightMat;
             monsterCounter++;
         }
-        if (backTo2 && monsterCounter == 2)
+        if (backTo2 && monsterCounter == 1)
         {
-            //Turn the timer 
+            //Flip over 
             timer2_obj.transform.localScale = new Vector3(timer2_obj.transform.localScale.x, timer2_obj.transform.localScale.y * -1, timer2_obj.transform.localScale.z);
             monsterCounter++;
         }
-
+        if (backTo1 && monsterCounter == 2)
+        {
+            //two plants
+            Renderer[] allChildren = plant2.gameObject.GetComponentsInChildren<Renderer>();
+            foreach (Renderer child in allChildren)
+            {
+                child.enabled = true;
+            }
+            monsterCounter++;
+        }
+      
     }
 
     // Use this for initialization
@@ -146,6 +159,12 @@ public class PlayerController : MonoBehaviour {
         backTo1 = true;
 
         monsterCounter = 0;
+
+        Renderer[] allChildren = plant2.gameObject.GetComponentsInChildren<Renderer>();
+        foreach (Renderer child in allChildren)
+        {
+            child.enabled = false;
+        }
     }
 	
 	// Update is called once per frame
@@ -208,6 +227,8 @@ public class PlayerController : MonoBehaviour {
                     backTo2 = true;
                     //play the animation
                     button1.SetBool("isPushed",true);
+                    //
+                    CheckMonster();
                 }
                 else
                 {
@@ -228,6 +249,7 @@ public class PlayerController : MonoBehaviour {
                     backTo2 = false;
                     //play the animation
                     button2.SetBool("isPushed", true);
+                    CheckMonster();
                 }
                 else
                 {
@@ -298,7 +320,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Handle Creepy Events when player's back is turned
-        CheckMonster();
+       
 
     }
 }
