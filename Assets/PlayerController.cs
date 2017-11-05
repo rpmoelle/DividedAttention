@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour {
 
     bool collide;
 
+   public AudioSource but1;
+    public AudioSource but2;
+
     //Test Monsters
     //public GameObject testMonster;
 
@@ -297,6 +300,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         orig_rot = timer1_obj.gameObject.transform.rotation;
+        
     }
 	
 	// Update is called once per frame
@@ -343,9 +347,11 @@ public class PlayerController : MonoBehaviour {
             //A collision occured between the ray and a thing
             if (hit.collider == buttonCol)
             {
+                
                 //Was the collision on Button 1
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    
                     //If the player clicks while looking at the button:
                     //Register the button click
                     button1Pushed = true;
@@ -355,6 +361,10 @@ public class PlayerController : MonoBehaviour {
                     backTo2 = true;
                     //play the animation
                     button1.SetBool("isPushed",true);
+                    if (!but1.isPlaying)
+                    {
+                        but1.Play();
+                    }
                     //reset
                     resetMonsters();
                     //Check for monsters
@@ -367,6 +377,7 @@ public class PlayerController : MonoBehaviour {
             }
             if (hit.collider == buttonCol2)
             {
+                
                 //Was the collision on Button 2
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -379,6 +390,10 @@ public class PlayerController : MonoBehaviour {
                     backTo2 = false;
                     //play the animation
                     button2.SetBool("isPushed", true);
+                    if (!but2.isPlaying)
+                    {
+                        but2.Play();
+                    }
                     //reset
                     resetMonsters();
                     //Check for monsters
