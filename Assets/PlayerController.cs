@@ -48,6 +48,10 @@ public class PlayerController : MonoBehaviour {
     public Material bigWall;
     public GameObject pedestal;
 
+    public Material smallFloor;
+    public Material smallCeiling;
+    public Material smallWall;
+
     public Light light1_ceiling;
     public Material greenLightMat;
     public MeshRenderer light1_model;
@@ -129,7 +133,30 @@ public class PlayerController : MonoBehaviour {
                 }
             case 7:
                 {
-                    //hallway
+                    //hallway return
+                    //player
+                    gameObject.transform.position = new Vector3(0, 0.93f, 0.87f);
+
+                    floor.transform.localScale = new Vector3(floor.transform.localScale.x, floor.transform.localScale.y, 1);
+                    floor.GetComponent<MeshRenderer>().material = smallFloor;
+                    //move the end cap back
+                    wallCap1.transform.position = new Vector3(wallCap1.transform.position.x, wallCap1.transform.position.y, 4.96f);
+                    //move plant, button, and timer
+                    plant.transform.position = new Vector3(plant.transform.position.x, plant.transform.position.y, 4.528f);
+                    button1_platform.transform.position = new Vector3(button1_platform.transform.position.x, button1_platform.transform.position.y, 4.52f);
+                    timer1.transform.position = new Vector3(timer1.transform.position.x, timer1.transform.position.y, 4.92f);
+                    pedestal.transform.position = new Vector3(pedestal.transform.position.x, pedestal.transform.position.y, 4.34f);
+                    //move light
+                    ceilingLightModel2.transform.position = new Vector3(ceilingLightModel2.transform.position.x, ceilingLightModel2.transform.position.y, 3.68f);
+                    light1_ceiling_obj.transform.position = new Vector3(light1_ceiling_obj.transform.position.x, light1_ceiling_obj.transform.position.y, 1.12f);
+                    //extend ceiling
+                    ceiling.transform.localScale = new Vector3(ceiling.transform.localScale.x, ceiling.transform.localScale.y, 1);
+                    ceiling.GetComponent<MeshRenderer>().material = smallCeiling;
+                    //scale walls
+                    wall1.transform.localScale = new Vector3(wall1.transform.localScale.x, wall1.transform.localScale.y, 1);
+                    wall2.transform.localScale = new Vector3(wall2.transform.localScale.x, wall2.transform.localScale.y, 1);
+                    wall1.GetComponent<MeshRenderer>().material = smallWall;
+                    wall2.GetComponent<MeshRenderer>().material = smallWall;
                     break;
                 }
         }

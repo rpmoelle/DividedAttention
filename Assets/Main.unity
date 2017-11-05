@@ -4075,6 +4075,9 @@ MonoBehaviour:
   bigCeiling: {fileID: 2100000, guid: f706d64283e5fc34eab094761d4d0949, type: 2}
   bigWall: {fileID: 2100000, guid: c5f86dc78ed77be4c8295c76257544bf, type: 2}
   pedestal: {fileID: 2125690330}
+  smallFloor: {fileID: 2100000, guid: a7bde099571c2654585cabe76b0b7cac, type: 2}
+  smallCeiling: {fileID: 2100000, guid: 1634978e0bbb4a64a9200379c774f771, type: 2}
+  smallWall: {fileID: 2100000, guid: e78ac66d242d15742816fbb03580cebc, type: 2}
   light1_ceiling: {fileID: 254746356}
   greenLightMat: {fileID: 2100000, guid: 1305a0a5cf9d0b84585edb4c8b494a74, type: 2}
   light1_model: {fileID: 537754364}
