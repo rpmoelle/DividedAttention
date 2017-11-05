@@ -367,6 +367,10 @@ public class PlayerController : MonoBehaviour {
         {
             SceneManager.LoadScene(0);
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Application.Quit();
+        }
         //Handle player movement ->See Camera Controller
         //They did this way way way better than I did
         //////////////////////////////////////////////////
