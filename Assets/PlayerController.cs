@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     public GameObject cam; //This is the main camera that is a child of the player
@@ -361,6 +362,11 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        ///Restart Scene on Escape Press
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
         //Handle player movement ->See Camera Controller
         //They did this way way way better than I did
         //////////////////////////////////////////////////
