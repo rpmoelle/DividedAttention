@@ -336,8 +336,8 @@ public class PlayerController : MonoBehaviour {
         endingFlip = 0f;
         speed = 4f;
 
-        button1Timer = 1500;
-        button2Timer = 1500;
+        button1Timer = 1800;
+        button2Timer = 1800;
 
         button1Rest = 0;
         button2Rest = 0;
@@ -441,7 +441,7 @@ public class PlayerController : MonoBehaviour {
         Ray ray = cam.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         //Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);//show the debug ray
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1f)) //the 10f is the length the ray extends in distance
+        if (Physics.Raycast(ray, out hit, 2.5f)) //the 10f is the length the ray extends in distance
         {
             //A collision occured between the ray and a thing
             if (hit.collider == buttonCol)
