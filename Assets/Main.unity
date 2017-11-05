@@ -4223,7 +4223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &733392331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6501,7 +6501,6 @@ GameObject:
   - component: {fileID: 1081715802}
   - component: {fileID: 1081715805}
   - component: {fileID: 1081715804}
-  - component: {fileID: 1081715803}
   m_Layer: 0
   m_Name: backCam
   m_TagString: Untagged
@@ -6522,13 +6521,6 @@ Transform:
   m_Father: {fileID: 1510086934}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!81 &1081715803
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1081715801}
-  m_Enabled: 1
 --- !u!124 &1081715804
 Behaviour:
   m_ObjectHideFlags: 0
@@ -6953,7 +6945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1195863253
 RectTransform:
   m_ObjectHideFlags: 0
