@@ -441,7 +441,7 @@ public class PlayerController : MonoBehaviour {
         Ray ray = cam.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         //Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);//show the debug ray
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 10f)) //the 10f is the length the ray extends in distance
+        if (Physics.Raycast(ray, out hit, 1f)) //the 10f is the length the ray extends in distance
         {
             //A collision occured between the ray and a thing
             if (hit.collider == buttonCol)
@@ -579,12 +579,12 @@ public class PlayerController : MonoBehaviour {
             if (button1Timer/30 < 10)
             {
                 button1Timer_world.text = "00:0" + button1Timer / 30;
-                fakeTimer.GetComponent<Text>().text = "00:0" + button1Timer / 30;
+                //fakeTimer.GetComponent<Text>().text = "00:0" + button1Timer / 30;
             }
             else
             {
                 button1Timer_world.text = "00:" + button1Timer / 30;
-                fakeTimer.GetComponent<Text>().text = "00:" + button1Timer / 30;
+                //fakeTimer.GetComponent<Text>().text = "00:" + button1Timer / 30;
             }
 
             if (playerMoved)
