@@ -6,6 +6,7 @@ TagManager:
   tags:
   - button
   - wall
+  - fakeButton
   layers:
   - Default
   - TransparentFX

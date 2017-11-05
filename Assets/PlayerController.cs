@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour {
    public AudioSource but1;
     public AudioSource but2;
 
+    public Camera cam2;
+    public Camera mainCam;
+
     //Test Monsters
     //public GameObject testMonster;
 
@@ -70,6 +73,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject fakeTimer;
     Quaternion orig_rot;
 
+    public GameObject buttonExplosion;
+
     bool backTo1;
     bool backTo2;
 
@@ -78,6 +83,8 @@ public class PlayerController : MonoBehaviour {
     //Buttons
     public Animator button1;
     public Animator button2;
+
+    bool playerMoved;
 
    /* void OnCollisionEnter(Collision col)
     {
@@ -160,6 +167,29 @@ public class PlayerController : MonoBehaviour {
                     wall2.transform.localScale = new Vector3(wall2.transform.localScale.x, wall2.transform.localScale.y, 1);
                     wall1.GetComponent<MeshRenderer>().material = smallWall;
                     wall2.GetComponent<MeshRenderer>().material = smallWall;
+                    break;
+                }
+            case 8:
+                {
+                    Renderer[] allChildren = buttonExplosion.gameObject.GetComponentsInChildren<Renderer>();
+                    foreach (Renderer child in allChildren)
+                    {
+                        child.enabled = false;
+                        Renderer[] chils = child.gameObject.GetComponentsInChildren<Renderer>();
+                        foreach (Renderer o in chils)
+                        {
+                            o.enabled = false;
+                        }
+                    }
+                    break;
+                }
+            case 9:
+                {
+                    break;
+                }
+            case 10:
+                {
+                    speed = 4f;
                     break;
                 }
         }
@@ -250,18 +280,32 @@ public class PlayerController : MonoBehaviour {
         if (backTo2 && monsterCounter == 8)
         {
             // 9 Tilted player
+            //z = -34.241
+            
+            
             monsterCounter++;
         }
 
         if (backTo1 && monsterCounter == 7)
         {
-            // 8 two buttons
+            // 8 buttons explosions
+            Renderer[] allChildren = buttonExplosion.gameObject.GetComponentsInChildren<Renderer>();
+            foreach (Renderer child in allChildren)
+            {
+                child.enabled = true;
+                Renderer[] chils = child.gameObject.GetComponentsInChildren<Renderer>();
+                foreach(Renderer o in chils)
+                {
+                    o.enabled = true;
+                }
+            }
             monsterCounter++;
         }
 
         if (backTo1 && monsterCounter == 9)
         {
             // 10 reduced speed
+            speed = 2f;
             monsterCounter++;
         }
 
@@ -300,7 +344,18 @@ public class PlayerController : MonoBehaviour {
         }
 
         orig_rot = timer1_obj.gameObject.transform.rotation;
-        
+
+        Renderer[] allChildren1 = buttonExplosion.gameObject.GetComponentsInChildren<Renderer>();
+        foreach (Renderer child in allChildren1)
+        {
+            child.enabled = false;
+            Renderer[] chils = child.gameObject.GetComponentsInChildren<Renderer>();
+            foreach (Renderer o in chils)
+            {
+                o.enabled = false;
+            }
+        }
+
     }
 	
 	// Update is called once per frame
@@ -313,6 +368,10 @@ public class PlayerController : MonoBehaviour {
         //Get player's input for what direction they want to go in
         float z = Input.GetAxis("Vertical") * Time.deltaTime;
         gameObject.transform.position += z * cam.transform.forward * speed;
+        if (Input.anyKey)
+        {
+            playerMoved = true;
+        }
 
        
         /* float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
@@ -412,7 +471,7 @@ public class PlayerController : MonoBehaviour {
         //A timer will decrement as long as the player is not pressing that button
         
 
-        if (!button1Pushed)
+        if (!button1Pushed && playerMoved)
         {
             button1Timer--;
         }
@@ -428,7 +487,7 @@ public class PlayerController : MonoBehaviour {
 
             }
         }
-        if (!button2Pushed)
+        if (!button2Pushed && playerMoved)
         {
             button2Timer--;
         }
@@ -478,7 +537,11 @@ public class PlayerController : MonoBehaviour {
                 button1Timer_world.text = "00:" + button1Timer / 30;
             }
 
-            totalTime++;
+            if (playerMoved)
+            {
+                totalTime++;
+            }
+            
         }
 
         //Handle Creepy Events when player's back is turned
