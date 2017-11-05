@@ -189,6 +189,9 @@ public class PlayerController : MonoBehaviour {
                 }
             case 9:
                 {
+                    Vector3 rotationVector = transform.rotation.eulerAngles;
+                    rotationVector.z = 0f;
+                    transform.rotation = Quaternion.Euler(rotationVector);
                     break;
                 }
             case 10:
@@ -286,8 +289,10 @@ public class PlayerController : MonoBehaviour {
         {
             // 9 Tilted player
             //z = -34.241
-            
-            
+            Vector3 rotationVector = transform.rotation.eulerAngles;
+            rotationVector.z = 66.028f;
+            transform.rotation = Quaternion.Euler(rotationVector);
+
             monsterCounter++;
         }
 
@@ -388,14 +393,15 @@ public class PlayerController : MonoBehaviour {
             float z = Input.GetAxis("Vertical") * Time.deltaTime;
             gameObject.transform.position += z * cam.transform.forward * speed;
         }
-        else if(endingFlip > -96)
+        ///PUT THIS BACK IN
+       /* else if(endingFlip > -96)
         {
             Vector3 rotationVector = transform.rotation.eulerAngles;
             //rotationVector.z = -96;
             rotationVector.z = endingFlip;
             endingFlip -= 2;
             transform.rotation = Quaternion.Euler(rotationVector);
-        }
+        }*/
 
 
         if (Input.anyKey)
@@ -548,7 +554,8 @@ public class PlayerController : MonoBehaviour {
 
             //tump over the player
             Debug.Log("DONE");
-            noMove = true;
+            //AD THIS BACK IN
+           // noMove = true;
             
 
         }
