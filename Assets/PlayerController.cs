@@ -250,7 +250,8 @@ public class PlayerController : MonoBehaviour {
         if (backTo1 && monsterCounter == 1)
         {
             // 2 Change timer color
-            timer1_obj.gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.magenta;
+            //timer1_obj.gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.magenta;
+            timer1_obj.gameObject.transform.GetChild(0).GetComponent<Text>().color = new Color(255,79,0);
             monsterCounter++;
         }
 
@@ -370,11 +371,12 @@ public class PlayerController : MonoBehaviour {
         ///Restart Scene on Escape Press
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0);
+            Application.Quit();
+            
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Application.Quit();
+            SceneManager.LoadScene(0);
         }
         //Handle player movement ->See Camera Controller
         //They did this way way way better than I did
@@ -540,7 +542,7 @@ public class PlayerController : MonoBehaviour {
         {
             //If either timer hits zero, game is over
             //Display the player's time as a score
-            end_text.text = "You've got a one track mind.\nTime survived: " + Mathf.Round(totalTime / 30) + " seconds.";
+            end_text.text = "You've got a one track mind.\nTime worked: " + Mathf.Round(totalTime / 30) + " seconds.\nPress P to work again.";
             button1Timer_text.text = "00:00";
             button2Timer_text.text = "00:00";
 
