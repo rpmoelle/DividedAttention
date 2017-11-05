@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
     bool collide;
 
     //Test Monsters
-    public GameObject testMonster;
+    //public GameObject testMonster;
 
     public GameObject floor;
     public GameObject wallCap1;
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
     public Material bigFloor;
     public Material bigCeiling;
     public Material bigWall;
+    public GameObject pedestal;
 
     public Light light1_ceiling;
     public Material greenLightMat;
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject plant2;
 
-
+    public Material lightMaterial;
 
     bool backTo1;
     bool backTo2;
@@ -79,6 +80,54 @@ public class PlayerController : MonoBehaviour {
      
     }*/
 
+    void resetMonsters()
+    {
+        //This function resets the hallway and is called after each monster
+        switch (monsterCounter)
+        {
+            case 1:
+                {
+                    timer2_obj.transform.localScale = new Vector3(timer2_obj.transform.localScale.x, timer2_obj.transform.localScale.y * -1, timer2_obj.transform.localScale.z);
+                    break;
+                }
+            case 2:
+                {
+                    timer1_obj.gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.red;
+                    break;
+                }
+            case 3:
+                {
+                    Renderer[] allChildren = plant2.gameObject.GetComponentsInChildren<Renderer>();
+                    foreach (Renderer child in allChildren)
+                    {
+                        child.enabled = false;
+                    }
+                    monsterCounter++;
+                    break;
+                }
+            case 4:
+                {
+                    //rotate back
+                    break;
+                }
+            case 5:
+                {
+                    light1_ceiling.color = Color.white;
+                    light1_model.material = lightMaterial;
+                    break;
+                }
+            case 6:
+                {
+                    //darkness?
+                    break;
+                }
+            case 7:
+                {
+                    //hallway
+                    break;
+                }
+        }
+    }
 
     void CheckMonster()
     {
@@ -97,6 +146,7 @@ public class PlayerController : MonoBehaviour {
             plant.transform.position = new Vector3(plant.transform.position.x, plant.transform.position.y, 20);
             button1_platform.transform.position = new Vector3(button1_platform.transform.position.x, button1_platform.transform.position.y, 20);
             timer1.transform.position = new Vector3(timer1.transform.position.x, timer1.transform.position.y, 24);
+            pedestal.transform.position = new Vector3(pedestal.transform.position.x, pedestal.transform.position.y, 20);
             //move light
             ceilingLightModel2.transform.position = new Vector3(ceilingLightModel2.transform.position.x, ceilingLightModel2.transform.position.y, 24);
             light1_ceiling_obj.transform.position = new Vector3(light1_ceiling_obj.transform.position.x, light1_ceiling_obj.transform.position.y, 24);
@@ -130,6 +180,7 @@ public class PlayerController : MonoBehaviour {
         if (backTo1 && monsterCounter == 1)
         {
             // 2 Change timer color
+            timer1_obj.gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.magenta;
             monsterCounter++;
         }
 
@@ -147,6 +198,9 @@ public class PlayerController : MonoBehaviour {
         if (backTo1 && monsterCounter == 3)
         {
             // 4 Turn the timer
+            //z=14.636
+            Quaternion target = Quaternion.Euler(0, 0, 14.636f);
+            timer1_obj.gameObject.transform.rotation = target;
             monsterCounter++;
         }
 
@@ -195,7 +249,7 @@ public class PlayerController : MonoBehaviour {
         button2Pushed = false;
 
         //All Monsters start invisible
-        testMonster.GetComponent<MeshRenderer>().enabled = false;
+       // testMonster.GetComponent<MeshRenderer>().enabled = false;
 
         backTo2 = false;
         backTo1 = true;
@@ -269,7 +323,9 @@ public class PlayerController : MonoBehaviour {
                     backTo2 = true;
                     //play the animation
                     button1.SetBool("isPushed",true);
-                    //
+                    //reset
+                    resetMonsters();
+                    //Check for monsters
                     CheckMonster();
                 }
                 else
@@ -291,6 +347,9 @@ public class PlayerController : MonoBehaviour {
                     backTo2 = false;
                     //play the animation
                     button2.SetBool("isPushed", true);
+                    //reset
+                    resetMonsters();
+                    //Check for monsters
                     CheckMonster();
                 }
                 else
