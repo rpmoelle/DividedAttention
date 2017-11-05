@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour {
 
     public Material lightMaterial;
 
+    public GameObject fakeTimer;
+    Quaternion orig_rot;
+
     bool backTo1;
     bool backTo2;
 
@@ -102,12 +105,15 @@ public class PlayerController : MonoBehaviour {
                     {
                         child.enabled = false;
                     }
-                    monsterCounter++;
                     break;
                 }
             case 4:
                 {
                     //rotate back
+                    timer1_obj.gameObject.GetComponent<Image>().enabled = true;
+                    timer1_obj.gameObject.transform.GetChild(0).GetComponent<Text>().enabled = true;
+                    fakeTimer.gameObject.GetComponent<Image>().enabled = false;
+                    fakeTimer.gameObject.transform.GetChild(0).GetComponent<Text>().enabled = false;
                     break;
                 }
             case 5:
@@ -198,9 +204,10 @@ public class PlayerController : MonoBehaviour {
         if (backTo1 && monsterCounter == 3)
         {
             // 4 Turn the timer
-            //z=14.636
-            Quaternion target = Quaternion.Euler(0, 0, 14.636f);
-            timer1_obj.gameObject.transform.rotation = target;
+            timer1_obj.gameObject.GetComponent<Image>().enabled = false;
+            timer1_obj.gameObject.transform.GetChild(0).GetComponent<Text>().enabled = false;
+            fakeTimer.gameObject.GetComponent<Image>().enabled = true;
+            fakeTimer.gameObject.transform.GetChild(0).GetComponent<Text>().enabled = true;
             monsterCounter++;
         }
 
@@ -237,7 +244,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        speed = 6f;
+        speed = 4f;
 
         button1Timer = 1200;
         button2Timer = 1200;
@@ -261,6 +268,8 @@ public class PlayerController : MonoBehaviour {
         {
             child.enabled = false;
         }
+
+        orig_rot = timer1_obj.gameObject.transform.rotation;
     }
 	
 	// Update is called once per frame
@@ -274,11 +283,7 @@ public class PlayerController : MonoBehaviour {
         float z = Input.GetAxis("Vertical") * Time.deltaTime;
         gameObject.transform.position += z * cam.transform.forward * speed;
 
-        if (collide)
-        {
-            collide = false;
-            speed = 2;
-        }
+       
         /* float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
          float z = Input.GetAxis("Vertical") * Time.deltaTime;
 
