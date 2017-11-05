@@ -336,8 +336,8 @@ public class PlayerController : MonoBehaviour {
         endingFlip = 0f;
         speed = 4f;
 
-        button1Timer = 1200;
-        button2Timer = 1200;
+        button1Timer = 1500;
+        button2Timer = 1500;
 
         button1Rest = 0;
         button2Rest = 0;
@@ -398,14 +398,14 @@ public class PlayerController : MonoBehaviour {
             gameObject.transform.position += z * cam.transform.forward * speed;
         }
         ///PUT THIS BACK IN
-       /* else if(endingFlip > -96)
+        else if(endingFlip > -96)
         {
             Vector3 rotationVector = transform.rotation.eulerAngles;
             //rotationVector.z = -96;
             rotationVector.z = endingFlip;
             endingFlip -= 2;
             transform.rotation = Quaternion.Euler(rotationVector);
-        }*/
+        }
 
 
         if (Input.anyKey)
@@ -559,12 +559,13 @@ public class PlayerController : MonoBehaviour {
             //tump over the player
             Debug.Log("DONE");
             //AD THIS BACK IN
-           // noMove = true;
+           noMove = true;
             
 
         }
         else
         {
+            
             button1Timer_text.text = "Button 1 Timer: " + button1Timer / 30;
             button2Timer_text.text = "Button 2 Timer: " + button2Timer / 30;
             if(button2Timer/30 < 10)
@@ -578,10 +579,12 @@ public class PlayerController : MonoBehaviour {
             if (button1Timer/30 < 10)
             {
                 button1Timer_world.text = "00:0" + button1Timer / 30;
+                fakeTimer.GetComponent<Text>().text = "00:0" + button1Timer / 30;
             }
             else
             {
                 button1Timer_world.text = "00:" + button1Timer / 30;
+                fakeTimer.GetComponent<Text>().text = "00:" + button1Timer / 30;
             }
 
             if (playerMoved)
