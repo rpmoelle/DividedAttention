@@ -35,8 +35,7 @@ public class PlayerController : MonoBehaviour {
    public AudioSource but1;
     public AudioSource but2;
 
-    public Camera cam2;
-    public Camera mainCam;
+    public Camera cam2;//the backwards facing camera
 
     //Test Monsters
     //public GameObject testMonster;
@@ -322,6 +321,11 @@ public class PlayerController : MonoBehaviour {
         if (backTo2 && monsterCounter == 10)
         {
             // 11 double vision
+            //move the main display
+            cam.GetComponent<Camera>().rect = new Rect(0, 0, .5f, 1f);
+            //move the second display
+            cam2.GetComponent<Camera>().enabled = true;
+            cam2.GetComponent<Camera>().rect = new Rect(0.5f, 0, .5f, 1f);
             monsterCounter++;
         }
     }
