@@ -81,6 +81,9 @@ public class PlayerController : MonoBehaviour {
 
     int monsterCounter;
 
+    bool noMove;//can the player move
+    float endingFlip;
+
     //Buttons
     public Animator button1;
     public Animator button2;
@@ -319,6 +322,8 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        endingFlip = 0f;
         speed = 4f;
 
         button1Timer = 1200;
@@ -376,8 +381,21 @@ public class PlayerController : MonoBehaviour {
         //////////////////////////////////////////////////
 
         //Get player's input for what direction they want to go in
-        float z = Input.GetAxis("Vertical") * Time.deltaTime;
-        gameObject.transform.position += z * cam.transform.forward * speed;
+        if (!noMove)
+        {
+            float z = Input.GetAxis("Vertical") * Time.deltaTime;
+            gameObject.transform.position += z * cam.transform.forward * speed;
+        }
+        else if(endingFlip > -96)
+        {
+            Vector3 rotationVector = transform.rotation.eulerAngles;
+            //rotationVector.z = -96;
+            rotationVector.z = endingFlip;
+            endingFlip -= 2;
+            transform.rotation = Quaternion.Euler(rotationVector);
+        }
+
+
         if (Input.anyKey)
         {
             playerMoved = true;
@@ -525,6 +543,12 @@ public class PlayerController : MonoBehaviour {
             end_text.text = "You've got a one track mind.\nTime survived: " + Mathf.Round(totalTime / 30) + " seconds.";
             button1Timer_text.text = "00:00";
             button2Timer_text.text = "00:00";
+
+            //tump over the player
+            Debug.Log("DONE");
+            noMove = true;
+            
+
         }
         else
         {
